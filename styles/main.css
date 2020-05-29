@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgreen;
+  height: 100vh;
+  margin: 0;
+}
+
+.counters {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 600px;
+  height: 600px;
+  /* border: 1px solid green; */
+  
+}
+
+.tile {
+  width: 11.11%;
+  height: 11.11%;
+  border: 2px solid wheat;
+}
+
+.frog {
+  background-image: url('../images/froggie.png');
+  background-size: contain;
+}
+
+.lilypad {
+  background-color: maroon;
+}
+
+.carsRight {
+  background-color: black;
+}
+
+.carsLeft {
+  background-color: black;
+}
+
+.road {
+  background-color: grey;
+
+}
+
+.log {
+  background-color: lightsalmon;
+}
+
+.water {
+  background-color: lightskyblue;
+}
