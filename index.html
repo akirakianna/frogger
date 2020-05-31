@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Frogger</title>
   <link rel="stylesheet" href="styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
   <script src="scripts/app.js"></script>
 </head>
+
 <body>
   <h1>
-    <img src="https://fontmeme.com/permalink/200529/17cf96a4038e5e37c2b4735bcbc530f5.png">
+    <img src="https://fontmeme.com/permalink/200529/08c2414a6d92566fa48f9cc42d22efc3.png">
   </h1>
   <section class="counters">
     <div class="timer">You have 20 seconds left!</div>
     <div class="lives">You have 3 lives left!</div>
   </section>
   <div class="grid"></div>
-  <button>Start</button>
+  <div class="buttons">
+    <button class="bob-on-hover">Start</button>
+    <button class="rules bob-on-hover">Rules</button>
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h1>Welcome to Frogger.</h1>
+        <p> MEET:  <img src="images/froggie.png" width="50px" height="50px">
+          ___ is a long way from home.
+          Can you guide her back? She must make it across the busy roads, taking care not to be
+          run over. Then, she must cross the river by jumping on the backs of the ..... 
+          before navigating her way to her lily pad.
+        </p>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
