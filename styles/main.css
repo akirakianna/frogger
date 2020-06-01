@@ -47,9 +47,10 @@ body {
 }
 
 .lilypad {
-  background-color: maroon; 
-  /* background-image: url('../images/lilypad.png');
-  background-size: contain; */
+  background-color: lightskyblue; 
+  background-image: url('../images/lilypad.png');
+  background-size: contain;
+  position: relative;
 }
 
 
