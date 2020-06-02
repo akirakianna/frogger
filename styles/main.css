@@ -41,7 +41,7 @@ body {
   border: 2px solid wheat;
 }
 
-.frog {
+div.frog {
   background-image: url('../images/froggie.png');
   background-size: contain;
 }
@@ -54,11 +54,11 @@ body {
 }
 
 
-.carsRight {
+div.carsRight {
   background-color: black;
 }
 
-.carsLeft {
+div.carsLeft {
   background-color: black;
 }
 
@@ -67,7 +67,7 @@ body {
 
 }
 
-.log {
+div.log {
   background-color: lightsalmon;
 }
 
