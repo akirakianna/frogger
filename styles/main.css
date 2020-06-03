@@ -7,11 +7,50 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgreen;
+  background-color: #90ee90;
   height: 100vh;
   margin: 0;
   margin-bottom: 30px;
 }
+
+h2 {
+  display: none;
+  z-index: 3;
+  position: absolute;
+  font-family: 'Inconsolata', monospace;
+  font-size: 75px;
+  /* background-color: #FFBBAC; */
+  width: 100%;
+  top: 20%;
+  text-align: center;
+  /* left: 32%; */ 
+  padding: 15px 10px;
+  color: white;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 0.5px black;
+}
+
+/* h2 {
+  display: none;
+  background: 
+    linear-gradient(
+      rgba(124, 244, 124, 0.7),
+      rgba(24, 79, 7, 0.7)
+    );
+  background-size: cover;
+  width: 100%;
+  top: 25%;
+  /* margin: 10px 0 0 10px; */
+  /*position: absolute;
+  display: none;
+  z-index: 3;
+  text-align: center;
+  padding: 15px 10px;
+  /* float: left; */
+  /*font-family: 'Inconsolata', monospace;
+  color: #90ee90;
+  font-size: 55px;
+} */
 
 .counters {
   display: flex;
@@ -20,7 +59,8 @@ body {
   justify-content: space-evenly;
   margin-bottom: 20px;
   font-family: 'Inconsolata', monospace;
-  font-size: 18px;
+  font-size: 20px;
+  color: #099749;
 }
 
 .grid {
@@ -31,14 +71,20 @@ body {
   height: 600px;
   /* border: 1px solid green; */
   margin-bottom: 20px;
-  
+  position: relative;
+  z-index: 1;
 }
 
 
 .tile {
   width: 11.11%;
   height: 11.11%;
-  border: 2px solid wheat;
+  border: 2px solid #E5FCE5;
+}
+
+.grass {
+  background-image: url('../images/moreWindyGrass.gif');
+  background-size: cover;
 }
 
 div.frog {
@@ -55,6 +101,9 @@ div.frog {
 
 
 div.carsRight {
+  /* background-image: url('../images/trucks.png');  */
+  background-size: center;
+  background-repeat: no-repeat;
   background-color: black;
 }
 
@@ -72,7 +121,7 @@ div.log {
 }
 
 .water {
-  background-color: lightskyblue;
+  background-color: #87cefa;
 }
 
 .buttons {
@@ -110,6 +159,20 @@ button {
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
+.modal-head {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFBBAC;
+  padding: 2rem 1.5rem;
+  width: 40rem;
+  /* border-radius: ; */
+  color: blue;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+
+}
 .modal-content {
   position: absolute;
   top: 50%;
@@ -117,23 +180,26 @@ button {
   transform: translate(-50%, -50%);
   background-color: #CFFFCE;
   padding: 1rem 1.5rem;
-  width: 24rem;
+  width: 40rem;
   border-radius: 0.5rem;
-  color: blue;
+  color: #FFBBAC;
   text-align: center;
   font-family: 'Inconsolata', monospace;
 }
 .close-button {
   float: right;
-  width: 1.5rem;
-  line-height: 1.5rem;
+  width: 2rem;
+  line-height: 2rem;
   text-align: center;
   cursor: pointer;
   border-radius: 0.25rem;
-  background-color: #FFBBAC;
+  background-color: #CEFFE5;
+  color: #FFBBAC;
 }
 .close-button:hover {
-  background-color: #CEFFE5;
+  background-color: #FFBBAC;
+  color: #CEFFE5;
+
 }
 .show-modal {
   opacity: 1;

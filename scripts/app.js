@@ -4,14 +4,15 @@ function setUpGame() {
   const timerDisplay = document.querySelector('.timer')
   const startButton = document.querySelector('button')
   const livesDisplay = document.querySelector('.lives')
+  const gameOutcome = document.querySelector('h2')
 
   let count = 30
   let lives = 3
-  let intervalId = 0
-
   let frogPosition = 76
+
   const width = 9
   const tiles = []
+  const grass = [9, 10, 11, 12, 13, 14, 15, 16, 17, 36, 37, 38, 39, 40, 41, 42, 43, 44, 63, 64, 65, 66, 67, 68, 69, 70, 71]
   const lilyPadFinish = [1, 4, 7]
   const carsRightDisplay = [54, 57, 60]
   const carsLeftDisplay = [47, 50, 53]
@@ -20,11 +21,14 @@ function setUpGame() {
   const logsRightDisplay = [28, 29, 30, 33, 34, 35]
   const riverDisplay = [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] // change to all
 
+  let intervalId
   let lilyPadInterval
   let logsLeftInterval
   let logsRightInterval
   let carsRightInterval
   let carsLeftInterval
+
+  let endGame = true
 
 
   //Creating tiles on grid
@@ -39,6 +43,10 @@ function setUpGame() {
   //Placing/ creating all of the pieces on grid
 
   tiles[frogPosition].classList.add('frog')
+
+  grass.forEach(grassPosition => {
+    tiles[grassPosition].classList.add('grass')
+  })
 
   lilyPadFinish.forEach(lilypad => {
     tiles[lilypad].classList.add('lilypad')
@@ -111,50 +119,70 @@ function setUpGame() {
 
   // ------- PLAYING THE GAME ------- //
 
-  startButton.addEventListener('click', () => {
-    // swal({
-    //   icon: "warning",
-    //   text: `You have ${lives} lives left!`
-    // });
-    startButton.classList.remove('bob-on-hover')
+  // ------ moving frog ------ //
 
-    // Creating movement for the frog
 
-    document.addEventListener('keydown', (e) => {
+
+  document.addEventListener('keydown', (e) => {
+    if (endGame) {
+      console.log('game is over but listening')
+      return
+    } else {
       if (e.key === 'ArrowRight') {
         if (frogPosition === tiles.length - 1) {
           return
         }
         frogPosition += 1
-        renderGame()
-        gameOver()
+        // renderGame()
+        // gameOver()
 
       } else if (e.key === 'ArrowLeft') {
         if (frogPosition === 0) {
           return
         }
         frogPosition -= 1
-        renderGame()
-        gameOver()
+        // renderGame()
+        // gameOver()
 
       } else if (e.key === 'ArrowUp') {
+
         if (frogPosition < width) {
           return
         }
         frogPosition -= width
-        renderGame()
-        gameOver()
+        console.log('frog has moved')
+        // renderGame()
+        // gameOver()
 
       } else if (e.key === 'ArrowDown') {
         if (frogPosition > (tiles.length - width - 1)) {
           return
         }
         frogPosition += width
-        renderGame()
-        gameOver()
+        // renderGame()
+        // gameOver()
 
       }
-    })
+      renderGame()
+      gameOver()
+    }
+  })
+
+
+
+
+  startButton.addEventListener('click', () => {
+    endGame = false
+    // swal({
+    //   icon: "warning",
+    //   text: `You have ${lives} lives left!`
+    // });
+    startButton.classList.remove('bob-on-hover')
+    console.log('hello')
+
+    // Creating movement for the frog
+
+
 
     // ------ GAME TIMER ------ //
 
@@ -186,10 +214,11 @@ function setUpGame() {
   // ------ Player Wins ------ //
 
   function playerWins() {
-    if (tiles[frogPosition].classList.contains('lilyPad')) {
+    if (tiles[frogPosition].classList.contains('lilypad')) {
       console.log('you won')
     }
   }
+  playerWins()
   // does this need to be called somewhere specific?
 
   // ------- Game Over ------ //
@@ -215,16 +244,46 @@ function setUpGame() {
       //   resetGame()
       // }
     }
+    if (tiles[frogPosition].classList.contains('lilypad')) {
+      gameOutcome.style.display = 'block'
+      gameOutcome.innerHTML = 'You won!'
+      setTimeout(() => {
+        gameOutcome.style.display = 'none'
+
+      }, 3000)
+      // alert('you won!')
+
+      resetGame()
+    }
+
   }
 
-  // ------ Reset Game (kind of) ------ //
+  // ------ Reset Game ------ //
+
   // veeeeery glitchy doesn't reset everything
   //called when lives === 0, or time has ran out 
   function resetGame() {
-    alert('Game Over!')
-    
+
+    //alert('game over!')
+
+    if (!lives || !count) {
+
+      gameOutcome.style.display = 'block'
+      gameOutcome.innerHTML = 'Game Over!'
+      setTimeout(() => {
+        gameOutcome.style.display = 'none'
+
+      }, 3000)
+
+    }
+
+
+    frogPosition = 76
+    renderGame()
+
+
     clearInterval(intervalId)
-    
+
     // clear all movement intervals???
     // can you put all in one set interval??
     clearInterval(lilyPadInterval)
@@ -232,18 +291,26 @@ function setUpGame() {
     clearInterval(carsLeftInterval)
     clearInterval(logsLeftInterval)
     clearInterval(logsRightInterval)
-    
+
+    endGame = true
     document.removeEventListener('keydown', event)
-    document.removeEventListener('click', event)
+    startButton.removeEventListener('click', event)
 
-    //frog isn't returning to starting position
+    count = 30
+    lives = 3
+    timerDisplay.innerHTML = `You have ${count} seconds left!`
+    livesDisplay.innerHTML = `Lives Remaining: ${lives}`
+
+    // gameOutcome.style.display = 'block'
+    // gameOutcome.innerHTML = 'GAME OVER'
+    // setTimeout(() => {
+    //   gameOutcome.style.display = 'none'
+
+    // }, 3000)
 
 
-    // count = 30
-    // lives = 3
-    // timerDisplay.innerHTML = `You have ${count} seconds left!`
-    // livesDisplay.innerHTML = `Lives Remaining: ${lives}`
-  
+    // startButton.classList.add('bob-on-hover')
+
   }
 
 
@@ -252,16 +319,33 @@ function setUpGame() {
 
   function resetFrog() {
     //removes frog from current position and places it back at starting position
+
+
     frogPosition = 76
-    lives = lives -= 1
+    lives = lives - 1
+    console.log(lives)
     livesDisplay.innerHTML = `Lives Remaining: ${lives}`
-    alert(`You have ${lives} lives left!`)
+    if (lives !== 0) {
+      gameMessage(`You have ${lives} lives left!`, 1000)
+    }
     if (lives === 0) {
+      // alert('game over')
+
       resetGame()
     }
-    
+
+
+
   }
- 
+
+  function gameMessage(message, delay) {
+    gameOutcome.style.display = 'block'
+    gameOutcome.innerHTML = message
+    setTimeout(() => {
+      gameOutcome.style.display = 'none'
+    }, delay)
+  }
+
   // ------ MOVING PIECES SECTION ------ //
 
   // ------ Lilypad Movement ------ //
@@ -277,7 +361,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 500)
+    }, 1000)
 
   }
 
@@ -288,8 +372,6 @@ function setUpGame() {
   function moveCarsRight() {
     carsRightInterval = setInterval(() => {
       carsRightDisplay.forEach((car, i) => {
-        // tiles[carsRightDisplay[i]].classList.remove('carsRight')
-        // tiles[carsRightDisplay[i]].classList.add('road')
         if (car === 62) {
           carsRightDisplay[i] = 54
         } else {
@@ -305,15 +387,11 @@ function setUpGame() {
   function moveCarsLeft() {
     carsLeftInterval = setInterval(() => {
       carsLeftDisplay.forEach((car, i) => {
-        // tiles[carsLeftDisplay[i]].classList.remove('carsLeft')
-        // tiles[carsLeftDisplay[i]].classList.add('road')
         if (car === 45) {
           carsLeftDisplay[i] = 53
         } else {
           carsLeftDisplay[i] -= 1
         }
-        // tiles[carsLeftDisplay[i]].classList.add('carsLeft')
-        // tiles[carsLeftDisplay[i]].classList.remove('road')
       })
       renderGame()
     }, 1000)
@@ -329,20 +407,21 @@ function setUpGame() {
 
   function moveLogsRight() {
     logsRightInterval = setInterval(() => {
+      let frogMoved = false
       logsRightDisplay.forEach((log, i) => {
         if (log === frogPosition) {
           if (log === 35) {
             logsRightDisplay[i] = 27
-            
+
             resetFrog()
-            
-          } else if (log !== 35) {
+
+          } else if (log !== 35 && !frogMoved) {
             logsRightDisplay[i] += 1
             frogPosition += 1
+            frogMoved = true
           } else {
             logsRightDisplay[i] += 1
           }
-
         } else {
           if (log === 35) {
             logsRightDisplay[i] = 27

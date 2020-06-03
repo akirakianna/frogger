@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
   <script src="scripts/app.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 </head>
 
 <body>
@@ -19,18 +19,20 @@
     <div class="timer">You have 30 seconds left!</div>
     <div class="lives">Lives Remaining: 3</div>
   </section>
-  <div class="grid"></div>
+  <div class="grid"><h2></h2></div>
   <div class="buttons">
     <button class="bob-on-hover">Start</button>
     <button class="rules bob-on-hover">Rules</button>
     <div class="modal">
       <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <h1>Welcome to Frogger.</h1>
-        <p> MEET:  <img src="images/froggie.png" width="50px" height="50px">
+        <!-- <span class="close-button">&times;</span> -->
+        <header class="modal-head"><img src="https://fontmeme.com/permalink/200602/7d8ad388e97ee92b7261c9086a3eb2c1.png"> 
+          <span class="close-button">&times;</span></header>
+        <img src="https://fontmeme.com/permalink/200602/43c83f3aa9db31d8b867bd433e0f26f6.png">
+        <p> MEET: <img src="images/froggie.png" width="50px" height="50px">
           ___ is a long way from home.
           Can you guide her back? She must make it across the busy roads, taking care not to be
-          run over. Then, she must cross the river by jumping on the backs of the ..... 
+          run over. Then, she must cross the river by jumping on the backs of the .....
           before navigating her way to her lily pad.
         </p>
       </div>
