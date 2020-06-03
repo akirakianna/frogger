@@ -61,6 +61,12 @@ h2 {
   border: 2px solid #E5FCE5;
 }
 
+div.sunflower {
+  background-image: url('../images/sunflower.png');
+  background-size: contain;
+
+}
+
 .grass {
   background-image: url('../images/moreWindyGrass.gif');
   background-size: cover;
