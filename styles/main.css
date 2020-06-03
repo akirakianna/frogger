@@ -18,39 +18,18 @@ h2 {
   z-index: 3;
   position: absolute;
   font-family: 'Inconsolata', monospace;
-  font-size: 75px;
-  /* background-color: #FFBBAC; */
-  width: 100%;
-  top: 20%;
+  font-size: 4em;
+  background-color: rgb(255, 187, 172, 0.6); 
+  width: 100%; 
+  top: 32%;
   text-align: center;
   /* left: 32%; */ 
   padding: 15px 10px;
-  color: white;
-  -webkit-text-fill-color: white;
+  /* color: white; */
+
+  -webkit-text-fill-color: white; 
   -webkit-text-stroke: 0.5px black;
 }
-
-/* h2 {
-  display: none;
-  background: 
-    linear-gradient(
-      rgba(124, 244, 124, 0.7),
-      rgba(24, 79, 7, 0.7)
-    );
-  background-size: cover;
-  width: 100%;
-  top: 25%;
-  /* margin: 10px 0 0 10px; */
-  /*position: absolute;
-  display: none;
-  z-index: 3;
-  text-align: center;
-  padding: 15px 10px;
-  /* float: left; */
-  /*font-family: 'Inconsolata', monospace;
-  color: #90ee90;
-  font-size: 55px;
-} */
 
 .counters {
   display: flex;
@@ -101,18 +80,19 @@ div.frog {
 
 
 div.carsRight {
-  /* background-image: url('../images/trucks.png');  */
-  background-size: center;
+  background-image: url('../images/carRight.gif'); 
+  background-size: contain;
   background-repeat: no-repeat;
-  background-color: black;
 }
 
 div.carsLeft {
-  background-color: black;
+  background-image: url('../images/carLeft.gif'); 
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .road {
-  background-color: grey;
+  background-color: #AAB7B8;
 
 }
 
@@ -171,6 +151,7 @@ button {
   color: blue;
   text-align: center;
   font-family: 'Inconsolata', monospace;
+  /* z-index: -2; */
 
 }
 .modal-content {
@@ -185,6 +166,7 @@ button {
   color: #FFBBAC;
   text-align: center;
   font-family: 'Inconsolata', monospace;
+  /* z-index: -2; */
 }
 .close-button {
   float: right;

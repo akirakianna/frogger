@@ -4,15 +4,18 @@ function setUpGame() {
   const timerDisplay = document.querySelector('.timer')
   const startButton = document.querySelector('button')
   const livesDisplay = document.querySelector('.lives')
+  const pointsDisplay = document.querySelector('.points')
   const gameOutcome = document.querySelector('h2')
 
   let count = 30
   let lives = 3
+  let points = 0
   let frogPosition = 76
+
 
   const width = 9
   const tiles = []
-  const grass = [9, 10, 11, 12, 13, 14, 15, 16, 17, 36, 37, 38, 39, 40, 41, 42, 43, 44, 63, 64, 65, 66, 67, 68, 69, 70, 71]
+  const grass = [9, 10, 11, 12, 13, 14, 15, 16, 17, 36, 37, 38, 39, 40, 41, 42, 43, 44, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
   const lilyPadFinish = [1, 4, 7]
   const carsRightDisplay = [54, 57, 60]
   const carsLeftDisplay = [47, 50, 53]
@@ -164,6 +167,7 @@ function setUpGame() {
 
       }
       renderGame()
+      gamePoints()
       gameOver()
     }
   })
@@ -207,6 +211,7 @@ function setUpGame() {
     moveLogsLeft()
     moveLilyPads()
 
+
   })
 
   // ------ GAME FUNCTIONS ------ //
@@ -245,12 +250,13 @@ function setUpGame() {
       // }
     }
     if (tiles[frogPosition].classList.contains('lilypad')) {
-      gameOutcome.style.display = 'block'
-      gameOutcome.innerHTML = 'You won!'
-      setTimeout(() => {
-        gameOutcome.style.display = 'none'
+      // gameOutcome.style.display = 'block'
+      // gameOutcome.innerHTML = 'You won!'
+      // setTimeout(() => {
+      //   gameOutcome.style.display = 'none'
 
-      }, 3000)
+      // }, 3000)
+      gameMessage('You won!', 3000)
       // alert('you won!')
 
       resetGame()
@@ -268,12 +274,13 @@ function setUpGame() {
 
     if (!lives || !count) {
 
-      gameOutcome.style.display = 'block'
-      gameOutcome.innerHTML = 'Game Over!'
-      setTimeout(() => {
-        gameOutcome.style.display = 'none'
+      // gameOutcome.style.display = 'block'
+      // gameOutcome.innerHTML = 'Game Over!'
+      // setTimeout(() => {
+      //   gameOutcome.style.display = 'none'
 
-      }, 3000)
+      // }, 3000)
+      gameMessage('Game Over!', 3000)
 
     }
 
@@ -326,7 +333,7 @@ function setUpGame() {
     console.log(lives)
     livesDisplay.innerHTML = `Lives Remaining: ${lives}`
     if (lives !== 0) {
-      gameMessage(`You have ${lives} lives left!`, 1000)
+      gameMessage(`${lives} lives left!`, 1000)
     }
     if (lives === 0) {
       // alert('game over')
@@ -337,6 +344,24 @@ function setUpGame() {
 
 
   }
+
+  // ------ add points function ------ //
+
+  function gamePoints() {
+    if (tiles[frogPosition].classList.contains('grass')) {
+      points += 5
+    }
+    if (tiles[frogPosition].classList.contains('water')) {
+      points -= 2  
+    }
+    if (tiles[frogPosition].classList.contains('carsRight') || tiles[frogPosition].classList.contains('carsLeft')) {
+      points -= 5 
+    }
+    pointsDisplay.innerHTML = `Points: ${points}`
+  }
+
+
+  // ------ pop up message function ------ //
 
   function gameMessage(message, delay) {
     gameOutcome.style.display = 'block'
