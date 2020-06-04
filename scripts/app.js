@@ -20,10 +20,10 @@ function setUpGame() {
   const lilyPadFinish = [1, 4, 7]
   const carsRightDisplay = [54, 57, 60]
   const carsLeftDisplay = [47, 50, 53]
-  const roadDisplay = [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62] // change to all
+  const roadDisplay = [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62]
   const logsLeftDisplay = [18, 19, 20, 23, 24, 25]
   const logsRightDisplay = [28, 29, 30, 33, 34, 35]
-  const riverDisplay = [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] // change to all
+  const riverDisplay = [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 
   let intervalId
   let lilyPadInterval
@@ -133,12 +133,7 @@ function setUpGame() {
 
   }
 
-
-  // ------- PLAYING THE GAME ------- //
-
-  // ------ moving frog ------ //
-
-
+  // ------ CREATING FROG MOVEMENT ------ //
 
   document.addEventListener('keydown', (e) => {
     if (endGame) {
@@ -150,35 +145,22 @@ function setUpGame() {
           return
         }
         frogPosition += 1
-        // renderGame()
-        // gameOver()
-
       } else if (e.key === 'ArrowLeft') {
         if (frogPosition === 0) {
           return
         }
         frogPosition -= 1
-        // renderGame()
-        // gameOver()
-
       } else if (e.key === 'ArrowUp') {
-
         if (frogPosition < width) {
           return
         }
         frogPosition -= width
         console.log('frog has moved')
-        // renderGame()
-        // gameOver()
-
       } else if (e.key === 'ArrowDown') {
         if (frogPosition > (tiles.length - width - 1)) {
           return
         }
         frogPosition += width
-        // renderGame()
-        // gameOver()
-
       }
       renderGame()
       gamePoints()
@@ -187,27 +169,19 @@ function setUpGame() {
   })
 
 
+  // ------- PLAYING THE GAME ------- //
 
+  // ------ Click start button to play game ------ //
 
   startButton.addEventListener('click', () => {
     endGame = false
-    // swal({
-    //   icon: "warning",
-    //   text: `You have ${lives} lives left!`
-    // });
     startButton.classList.remove('bob-on-hover')
-    console.log('hello')
-
-    // Creating movement for the frog
-
-
 
     // ------ GAME TIMER ------ //
 
     intervalId = setInterval(() => {
       count = count - 1
       if (count < 1) {
-        //not working ??
         clearInterval(intervalId)
       }
       timerDisplay.innerHTML = `You have ${count} seconds left!`
@@ -224,124 +198,66 @@ function setUpGame() {
     moveLogsRight()
     moveLogsLeft()
     moveLilyPads()
-
-
   })
 
   // ------ GAME FUNCTIONS ------ //
 
-  // ------ Player Wins ------ //
-
-  function playerWins() {
-    if (tiles[frogPosition].classList.contains('lilypad')) {
-      console.log('you won')
-    }
-  }
-  playerWins()
-  // does this need to be called somewhere specific?
-
-  // ------- Game Over ------ //
-
+  // ------- Game Over and Win Game ------ //
 
   function gameOver() {
     if (tiles[frogPosition].classList.contains('road') && tiles[frogPosition].classList.contains('carsLeft')
       || tiles[frogPosition].classList.contains('carsRight')) {
       resetFrog()
-      // lives = lives -= 1
-      // livesDisplay.innerHTML = `Lives Remaining: ${lives}`
-      // alert(`You have ${lives} lives left!`)
-      // if (lives === 0) {
-      //   resetGame()
-      // }
     }
     if (tiles[frogPosition].classList.contains('water') && !tiles[frogPosition].classList.contains('lilypad') && !tiles[frogPosition].classList.contains('log')) {
       resetFrog()
-      // lives = lives -= 1
-      // livesDisplay.innerHTML = `Lives Remaining: ${lives}`
-      // alert(`You have ${lives} lives left!`)
-      // if (lives === 0) {
-      //   resetGame()
-      // }
     }
     if (tiles[frogPosition].classList.contains('lilypad')) {
-      // gameOutcome.style.display = 'block'
-      // gameOutcome.innerHTML = 'You won!'
-      // setTimeout(() => {
-      //   gameOutcome.style.display = 'none'
-
-      // }, 3000)
       gameMessage('You won!', 3000)
-      // alert('you won!')
-
       resetGame()
     }
-
   }
 
   // ------ Reset Game ------ //
+  //Called when lives === 0, time has run out, or you win.
 
-  // veeeeery glitchy doesn't reset everything
-  //called when lives === 0, or time has ran out 
   function resetGame() {
-
-    //alert('game over!')
-
     if (!lives || !count) {
-
-      // gameOutcome.style.display = 'block'
-      // gameOutcome.innerHTML = 'Game Over!'
-      // setTimeout(() => {
-      //   gameOutcome.style.display = 'none'
-
-      // }, 3000)
       gameMessage('Game Over!', 3000)
-
     }
 
+    //Resetting positions
 
     frogPosition = 76
     renderGame()
 
+    //Clearing all movement from board
 
     clearInterval(intervalId)
-
-    // clear all movement intervals???
-    // can you put all in one set interval??
     clearInterval(lilyPadInterval)
     clearInterval(carsRightInterval)
     clearInterval(carsLeftInterval)
     clearInterval(logsLeftInterval)
     clearInterval(logsRightInterval)
 
+    // Removing key and click listeners so you can't play again until start is clicked
     endGame = true
     document.removeEventListener('keydown', event)
     startButton.removeEventListener('click', event)
 
+    //Resetting counters
     count = 30
     lives = 3
     timerDisplay.innerHTML = `You have ${count} seconds left!`
     livesDisplay.innerHTML = `Lives Remaining: ${lives}`
-
-    // gameOutcome.style.display = 'block'
-    // gameOutcome.innerHTML = 'GAME OVER'
-    // setTimeout(() => {
-    //   gameOutcome.style.display = 'none'
-
-    // }, 3000)
-
-
-    // startButton.classList.add('bob-on-hover')
-
   }
 
 
   // ------ Reset Frog ------ //
-  // When you lose a life - if lives == 0 call resetGame function [see above]
+  // When you lose a life! If lives == 0, call resetGame function [see above]
 
   function resetFrog() {
     //removes frog from current position and places it back at starting position
-
-
     frogPosition = 76
     lives = lives - 1
     console.log(lives)
@@ -350,16 +266,12 @@ function setUpGame() {
       gameMessage(`${lives} lives left!`, 1000)
     }
     if (lives === 0) {
-      // alert('game over')
-
       resetGame()
     }
-
-
-
   }
 
-  // ------ add points/ sunflower function ------ //
+  // ------ Add Points/ Sunflower Function ------ //
+  // Needs work
 
   function gamePoints() {
     if (tiles[frogPosition].classList.contains('sunflower')) {
@@ -370,7 +282,7 @@ function setUpGame() {
       points -= 1
     } else if (tiles[frogPosition].classList.contains('water') && !tiles[frogPosition].classList.contains('log')) {
       points -= 1
-    } else if  (tiles[frogPosition].classList.contains('carsRight') || tiles[frogPosition].classList.contains('carsLeft')) {
+    } else if (tiles[frogPosition].classList.contains('carsRight') || tiles[frogPosition].classList.contains('carsLeft')) {
       points -= 1
     }
     pointsDisplay.innerHTML = `Points: ${points}`
@@ -380,7 +292,7 @@ function setUpGame() {
   }
 
 
-  // ------ pop up message function ------ //
+  // ------ Pop-up Message/ Alert ------ //
 
   function gameMessage(message, delay) {
     gameOutcome.style.display = 'block'
@@ -410,7 +322,6 @@ function setUpGame() {
   }
 
   // ------ CAR MOVEMENT ------ //
-
   // ------ Moving cars right ------ //
 
   function moveCarsRight() {
@@ -442,12 +353,7 @@ function setUpGame() {
   }
 
   // ------ LOG MOVEMENT ------ //
-
   // ------ Moving logs right, inc. frog with log ------ //
-
-  // ------ THERE IS A GLITCH HERE AROUND TILES 32 ------ //
-
-  // moveLogsRight()
 
   function moveLogsRight() {
     logsRightInterval = setInterval(() => {
@@ -478,7 +384,7 @@ function setUpGame() {
     }, 1000)
   }
 
-  // ------ Moving logs left inc. frog with log movement ------ //
+  // ------ Moving logs left, inc. frog with log movement ------ //
 
   function moveLogsLeft() {
     logsLeftInterval = setInterval(() => {
@@ -516,11 +422,7 @@ function setUpGame() {
     }, 1000)
   }
 
-
-
-
   // ------ RULES MODAL ------ //
-  // edit later 
 
   const modal = document.querySelector('.modal')
   const rules = document.querySelector('.rules')
@@ -542,34 +444,5 @@ function setUpGame() {
 
 
 }
-
-
-
-// figure out co-ords of right wall length of array % width = 0 .... use googl
-// figure out co-ords of left wall % width will return 0     
-//.... all numbers right wall % width (-1) will return 0
-
-//if left wall true move carsRightDisplay, if right wall move left
-
-//save to variables  leftwall ==== this module
-
-//2 booleans right wall and left wall
-// so if its right wall makes true...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.addEventListener('load', setUpGame)
