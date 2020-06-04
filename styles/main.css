@@ -28,8 +28,8 @@ h2 {
   top: 32%;
   text-align: center;
   padding: 15px 10px;
-  -webkit-text-fill-color: black; 
-  -webkit-text-stroke: 0.5px black;
+  -webkit-text-fill-color: white; 
+  -webkit-text-stroke: 0.5px white;
 }
 
 .counters {
@@ -77,7 +77,6 @@ div.lives {
 div.sunflower {
   background-image: url('../images/sunflower.png');
   background-size: contain;
-
 }
 
 .grass {
@@ -88,6 +87,8 @@ div.sunflower {
 div.frog {
   background-image: url('../images/froggie.png');
   background-size: contain;
+  z-index: 100;
+
 }
 
 .lilypad {
@@ -115,8 +116,16 @@ div.carsLeft {
 
 }
 
+div.tile.frog.log.water {
+  background-image: url('../images/froggie.png'), linear-gradient(#592A11, #A1887f, #592A11);
+  background-size: contain;
+}
+
 div.log {
-  background-color: lightsalmon;
+  background-image: linear-gradient(#592A11, #A1887f, #592A11);
+  background-size: contain;
+  z-index: 1, 2;  
+
 }
 
 .water {
@@ -140,8 +149,9 @@ button {
   font-family: 'Inconsolata', monospace;
   font-size: 30px;
   height: 50px;
-  width: 120px;
-  margin: 0 60px;
+  width: 130px;
+  margin: 0 100px;
+  padding: 5px;
 }
 
 .modal {
@@ -164,9 +174,8 @@ button {
   left: 50.05%;
   transform: translate(-50%, -50%);
   background-color: #FFBBAC;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   width: 40rem;
-  color: blue;
   text-align: center;
   font-family: 'Inconsolata', monospace;
 }
@@ -183,6 +192,43 @@ button {
   color: #FFBBAC;
   text-align: center;
   font-family: 'Inconsolata', monospace;
+  font-size: 20px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  color: #099749;
+}
+
+.howToPlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: flex-start;
+  border: 3px solid #FFBBAC;
+  padding: 5px;
+  /* align-items: center; */
+}
+
+.aboutFrog {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aboutLilypad {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.aboutLivesAndPoints {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .close-button {

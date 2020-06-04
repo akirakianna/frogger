@@ -137,7 +137,7 @@ function setUpGame() {
 
   document.addEventListener('keydown', (e) => {
     if (endGame) {
-      console.log('game is over but listening')
+      //game is over but listening
       return
     } else {
       if (e.key === 'ArrowRight') {
@@ -174,8 +174,11 @@ function setUpGame() {
   // ------ Click start button to play game ------ //
 
   startButton.addEventListener('click', () => {
+
+
     endGame = false
     startButton.classList.remove('bob-on-hover')
+
 
     // ------ GAME TIMER ------ //
 
@@ -213,7 +216,15 @@ function setUpGame() {
       resetFrog()
     }
     if (tiles[frogPosition].classList.contains('lilypad')) {
-      gameMessage('You won!', 3000)
+      //message shows for 3 seconds
+      gameMessage(`You won! You have ${points} points!`, 3000)
+      const audio = document.querySelector('audio')
+      audio.play()
+      setTimeout(() => {
+        audio.pause()
+        audio.currentTime = 0
+      }, 4000)
+      //stops sound after 3 seconds
       resetGame()
     }
   }
@@ -229,6 +240,12 @@ function setUpGame() {
     //Resetting positions
 
     frogPosition = 76
+    sunflowers.forEach(sunflowerPosition => {
+      if (tiles[sunflowerPosition].classList.contains('sunflower')) {
+        tiles[sunflowerPosition].classList.remove('sunflower')
+      }
+      tiles[sunflowerPosition].classList.add('sunflower')
+    })
     renderGame()
 
     //Clearing all movement from board
@@ -271,24 +288,24 @@ function setUpGame() {
   }
 
   // ------ Add Points/ Sunflower Function ------ //
-  // Needs work
+  // Needs work - don't want it to go into - points? or do i?
 
   function gamePoints() {
     if (tiles[frogPosition].classList.contains('sunflower')) {
       points += 5
       tiles[frogPosition].classList.remove('sunflower')
       tiles[frogPosition].classList.add('grass')
-    } else if (tiles[frogPosition].classList.contains('water') && !tiles[frogPosition].classList.contains('lilypad')) {
-      points -= 1
-    } else if (tiles[frogPosition].classList.contains('water') && !tiles[frogPosition].classList.contains('log')) {
-      points -= 1
-    } else if (tiles[frogPosition].classList.contains('carsRight') || tiles[frogPosition].classList.contains('carsLeft')) {
-      points -= 1
+    }
+    if (tiles[frogPosition].classList.contains('water') && !tiles[frogPosition].classList.contains('lilypad') && !tiles[frogPosition].classList.contains('log')) {
+      points -= 2
+    }
+    if (tiles[frogPosition].classList.contains('carsRight') || tiles[frogPosition].classList.contains('carsLeft')) {
+      points -= 5
+    }
+    if (points < 0) {
+      points = 0
     }
     pointsDisplay.innerHTML = `Points: ${points}`
-    // if (points === 0) {
-    //   pointsDisplay.innerHTML = `Points: ${points}`
-    // }
   }
 
 
@@ -317,7 +334,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 1000)
+    }, 500)
 
   }
 
@@ -334,7 +351,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 1000)
+    }, 400)
   }
 
   // ------ Moving cars left ------ //
@@ -349,7 +366,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 1000)
+    }, 400)
   }
 
   // ------ LOG MOVEMENT ------ //
@@ -381,7 +398,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 1000)
+    }, 800)
   }
 
   // ------ Moving logs left, inc. frog with log movement ------ //
@@ -419,7 +436,7 @@ function setUpGame() {
         }
       })
       renderGame()
-    }, 1000)
+    }, 800)
   }
 
   // ------ RULES MODAL ------ //

@@ -22,24 +22,40 @@
   <div class="grid">
     <h2></h2>
   </div>
-  <div class="buttons">
+  <section class="buttons">
     <button class="bob-on-hover">Start</button>
     <button class="rules bob-on-hover">Rules</button>
+  </section>
+    <audio><source src="./sounds/frogPond.mp3"></audio>
     <div class="modal">
       <div class="modal-content">
         <header class="modal-head"><img
-            src="https://fontmeme.com/permalink/200602/7d8ad388e97ee92b7261c9086a3eb2c1.png">
+            src="https://fontmeme.com/permalink/200604/3167e70c4254c27b137d3d0a670dacb8.png">
           <span class="close-button">&times;</span></header>
-        <img src="https://fontmeme.com/permalink/200602/43c83f3aa9db31d8b867bd433e0f26f6.png">
-        <p> MEET: <img src="images/froggie.png" width="50px" height="50px">
-          ___ is a long way from home.
-          Can you guide her back? She must make it across the busy roads, taking care not to be
-          run over. Then, she must cross the river by jumping on the backs of the .....
-          before navigating her way to her lily pad.
-        </p>
+          <div class="howToPlay">
+            <div class="aboutFrog">
+              <img src="images/froggie.png" width="50px" height="50px">
+         <p>This frog is a long way from home. Can you help it make its way back?  
+           Using only your arrow keys, you must guide the frog across the busy roads, taking care not to be
+          run over by the cars zipping past. Then, you must help it cross the treacherous river by hopping on to the backs of the logs.</p></div>
+           <div class="aboutLilypad">
+             <p>
+              The lilypads floating in the far pond are the frog's home. 
+              To win the game you must successfully navigate the frog on to one of these lilypads. 
+              You only have <span class="uppercase">30 seconds</span> in which to do this. When the time runs out, the game is over.
+             </p>
+             <img src="images/lilypad.png" width="50px" height="50px">
+           </div>
+           <div class="aboutLivesAndPoints">
+             <img src="images/sunflower.png" width="50px" height="50px">
+            <p> Collect these sunflowers as you travel to gain points - <span class="uppercase">each sunflower is worth 5 points</span>.
+             But be careful! If you are hit by one of the cars you will  <span class="uppercase">lose 5 points</span> and if you fall in to any water you will 
+             <span class="uppercase">lose 2 points</span>.    
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </body>
 
 </html>
