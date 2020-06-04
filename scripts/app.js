@@ -40,7 +40,6 @@ function setUpGame() {
     const tile = document.createElement('div')
     tile.classList.add('tile')
     grid.appendChild(tile)
-    tile.innerHTML = i
     tiles.push(tile)
   }
 
@@ -288,11 +287,10 @@ function setUpGame() {
   }
 
   // ------ Add Points/ Sunflower Function ------ //
-  // Needs work - don't want it to go into - points? or do i?
-
+  
   function gamePoints() {
     if (tiles[frogPosition].classList.contains('sunflower')) {
-      points += 5
+      points += 10
       tiles[frogPosition].classList.remove('sunflower')
       tiles[frogPosition].classList.add('grass')
     }
@@ -351,6 +349,7 @@ function setUpGame() {
         }
       })
       renderGame()
+      gameOver()
     }, 400)
   }
 
@@ -366,6 +365,7 @@ function setUpGame() {
         }
       })
       renderGame()
+      gameOver()
     }, 400)
   }
 
