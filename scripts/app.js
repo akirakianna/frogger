@@ -216,7 +216,7 @@ function setUpGame() {
     }
     if (tiles[frogPosition].classList.contains('lilypad')) {
       //message shows for 3 seconds
-      gameMessage(`You won! You have ${points} points!`, 3000)
+      gameMessage(`You win! You have ${points} points!`, 3000)
       const audio = document.querySelector('audio')
       audio.play()
       setTimeout(() => {
@@ -262,10 +262,14 @@ function setUpGame() {
     startButton.removeEventListener('click', event)
 
     //Resetting counters
+    points = 0
     count = 30
     lives = 3
+
+    pointsDisplay.innerHTML = `Points: ${points}`
     timerDisplay.innerHTML = `You have ${count} seconds left!`
     livesDisplay.innerHTML = `Lives Remaining: ${lives}`
+
   }
 
 
