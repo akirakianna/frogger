@@ -65,13 +65,14 @@ div.lives {
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
+  border: 6px solid #E5FCE5; 
 }
 
 
 .tile {
   width: 11.11%;
   height: 11.11%;
-  border: 2px solid #E5FCE5;
+  /* border: 2px solid #E5FCE5; */
 }
 
 div.sunflower {
@@ -109,6 +110,10 @@ div.carsLeft {
   background-image: url('../images/carLeft.gif'); 
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+div.tile.roadStripe.road {
+  border-top: 0.3vw dashed yellow;
 }
 
 .road {
