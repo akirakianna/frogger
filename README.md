@@ -1,11 +1,10 @@
-###![GA Logo](./images/GALogo.png)
+![GA Logo](./images/GALogo.png)
 
 # PROJECT 1 - FROGGER  
 <img src="images/froggie.png" alt ="pixel frog" width="80px" height="80px">
 
 ## Overview 
 Frogger was my first front-end development project undertaken during my time on GA's Software Engineering Immersive course.
-
 The game was to be built individually and completed within one week - *Please see below for the project brief.*
 
 
@@ -27,7 +26,7 @@ The game was to be built individually and completed within one week - *Please se
 - Must detect any collision (e.g. with cars and river)
 - Timers should be present. 
 
-![Frogger rules] (./images/froggerRules.png)
+![Frogger rules](./images/froggerRules.png)
 
 ## Technologies Used
 - HTML5
@@ -50,7 +49,7 @@ I began by creating and placing all of the components needed to play the game.
 
 - I created the tiles on the grid using a for loop instead of hard-coding each individual tile in my HTML file:
 
-```
+```js
 for (let i = 0; i < width ** 2; i++) {
     const tile = document.createElement('div')
     tile.classList.add('tile')
@@ -65,7 +64,7 @@ for (let i = 0; i < width ** 2; i++) {
 
 - I utilised the forEach() array method to place all of my components on to the grid. Example:
 
-```
+```js
  carsRightDisplay.forEach(car => {
     tiles[car].classList.add('carsRight')
   })
@@ -74,7 +73,7 @@ for (let i = 0; i < width ** 2; i++) {
 #### Rendering the Game
 The next step was to render my game. In order to do this I created a render game function:
 
-```
+```js
 function renderGame() {
     tiles.forEach(tile => {
       tile.classList.remove('frog')
@@ -115,7 +114,7 @@ However there is an else statement which becomes accessible once **endGame equal
     
 Once the start button is clicked, endGame is set to equal false which allows the player to move the frog :
 
-```
+```js
  startButton.addEventListener('click', () => {
 
    
@@ -131,7 +130,7 @@ The frog is moved by the user using the arrow keys - included in the else statem
 
 These are all automated with functions using **set intervals** to create movement. Example:
 
-```
+```js
 function moveLilyPads() {
     lilyPadInterval = setInterval(() => {
       lilyPadFinish.forEach((lilypad, i) => {
@@ -160,7 +159,7 @@ The frog will lose a life/die if:
 
 When the frog dies you want it to be removed from its current position and re-positioned at the start of the game. In order to do this I created a function called `resetFrog()`.
 
-```
+```js
  function resetFrog() {
     frogPosition = 76
     lives = lives - 1
@@ -192,7 +191,7 @@ To create both I had to consider the **conditions** that needed to be met in ord
 ##### Win
 
 - If the player successfully navigates the frog on to one of the lilypads: 
-```
+```js
  if (tiles[frogPosition].classList.contains('lilypad')) 
 ```
 
@@ -200,7 +199,7 @@ To create both I had to consider the **conditions** that needed to be met in ord
 
 - If the frog collides with one of the obstacles:
 
-```
+```js
 if (tiles[frogPosition].classList.contains('road') &&  tiles[frogPosition].classList.contains('carsLeft')
       || tiles[frogPosition].classList.contains('carsRight')) {
       resetFrog()
@@ -215,7 +214,7 @@ if (tiles[frogPosition].classList.contains('water') && !  tiles[frogPosition].cl
 
 - If time is up, or there are no lives remaining:
 
-```
+```js
 function resetGame() {
     if (!lives || !count) {
 ```
@@ -228,17 +227,17 @@ It is also called within the win game conditional statement inside of the gameOv
 
 Days 3 and 4 were reserved for bug fixing (*see bugs and challenges section*), adding any addtional features, styling my game with CSS and animating/ creating my game pieces. 
 
-![Game Board] (./images/frogger-game.png)
+![Game Board](./images/frogger-game.png)
 
 #### Points System
 I created the points system and the sunflowers feature on day 4:
 
-![Game Over Pop Up] (./images/frogger-points.png)
+![Game Over Pop Up](./images/frogger-points.png)
 
 The player can gain (and lose) points throughout the game.
 Points are gained by collecting the sunflowers that are scattered throughout the tiles. The player will lose points each time the frog loses a life. The deductions vary depending on what has caused the frog to lose a life. The conditions are stated in the rules of the game and are written in the ``gamePoints()`` function using conditional statements:
  
-```
+```js
  function gamePoints() {
     if (tiles[frogPosition].classList.contains('sunflower')) {
       points += 10
@@ -259,7 +258,7 @@ Points are gained by collecting the sunflowers that are scattered throughout the
 ```
 I also had some fun with my CSS styling and created a popup modal containg the rules for the game, as well as pop up messages that let you know how many lives you have left, or whether you have won or lost the game.
 
-```
+```js
   function gameMessage(message, delay) {
     gameOutcome.style.display = 'block'
     gameOutcome.innerHTML = message
@@ -268,12 +267,12 @@ I also had some fun with my CSS styling and created a popup modal containg the r
     }, delay)
   }
 ```
-![Game Over Pop Up] (./images/game-over.png)
-![Game Won Pop Up] (./images/frogger-win.png)
+![Game Over Pop Up](./images/game-over.png)
+![Game Won Pop Up](./images/frogger-win.png)
 
 As a bonus feature I added a sound effect for when the player wins the game. I used a setTimeout() function so that the sound plays just a little longer than the winning pop up message is displayed :
 
-```
+```js
 if (tiles[frogPosition].classList.contains('lilypad')) {
       //message shows for 3 seconds
       gameMessage(`You win! You have ${points} points!`, 3000)
@@ -303,7 +302,7 @@ div.tile.frog.log.water {
 }
 ```
 
-![Frog on log] (./images/frog-on-log.png)
+![Frog on log](./images/frog-on-log.png)
 
 - Frog death (cheery I know) logic - some small bugs fixed while building the game. For example, the frog was only dying if you moved the frog in to a car - I had to adjust the logic so that it also died if it was positioned on a road tile and a car moved into it. 
 I also had to adjust my if statements so that the frog only lost points/died if it hit a square of water with nothing else on it. 
