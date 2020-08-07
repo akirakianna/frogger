@@ -16,7 +16,7 @@ function setUpGame() {
   const tiles = []
   // const sunflowers = [9, 13, 36, 43, 64, 69, 80]
   const grass = [9, 10, 11, 12, 13, 14, 15, 16, 17, 36, 37, 38, 39, 40, 41, 42, 43, 44, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
-  let sunflowers = [grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)]]
+  const sunflowers = [grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)]]
   const lilyPadFinish = [1, 4, 7]
   const carsRightDisplay = [54, 57, 60]
   const carsLeftDisplay = [47, 50, 53]
@@ -196,7 +196,7 @@ function setUpGame() {
     }, 1000)
 
     // ------ CALLING FUNCTIONS ------ //
-    // Small delay ???
+    
 
     moveCarsRight()
     moveCarsLeft()
@@ -226,7 +226,7 @@ function setUpGame() {
         audio.pause()
         audio.currentTime = 0
       }, 4000)
-      //stops sound after 3 seconds
+      //stops sound after 4 seconds
       resetGame()
     }
   }

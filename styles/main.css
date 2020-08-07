@@ -72,7 +72,6 @@ div.lives {
 .tile {
   width: 11.11%;
   height: 11.11%;
-  /* border: 2px solid #E5FCE5; */
 }
 
 div.sunflower {
@@ -256,7 +255,7 @@ button {
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-/* button bob-on-hover animation */
+/* Button Animation */
 
 @-webkit-keyframes bob-on-hover {
   0% {
