@@ -14,7 +14,13 @@ body {
 }
 
 h1 img {
-  margin-bottom: 10px;
+  margin-top: 1.8rem;
+  margin-bottom: 0.1rem;
+  max-width: 400px;
+}
+
+h1 {
+  margin: 0;
 }
 
 h2 {
@@ -40,7 +46,7 @@ h2 {
   margin-top: 10px;
   margin-bottom: 20px;
   font-family: 'Inconsolata', monospace;
-  font-size: 20px;
+  font-size: 15px;
   color: #099749;
 }
 
@@ -60,8 +66,8 @@ div.lives {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
@@ -151,9 +157,9 @@ button {
   outline: none;
   color: white;
   font-family: 'Inconsolata', monospace;
-  font-size: 30px;
-  height: 50px;
-  width: 130px;
+  font-size: 25px;
+  height: 40px;
+  width: 110px;
   margin: 0 100px;
   padding: 5px;
 }
@@ -186,7 +192,7 @@ button {
 
 .modal-content {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #CFFFCE;
@@ -196,7 +202,7 @@ button {
   color: #FFBBAC;
   text-align: center;
   font-family: 'Inconsolata', monospace;
-  font-size: 20px;
+  font-size: clamp(15px, 4vh, 18px);
 }
 
 .uppercase {

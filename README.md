@@ -7,7 +7,7 @@
 ## Overview 
 Frogger was my first front-end development project undertaken during my time on GA's Software Engineering Immersive course.
 
-Try it out [here](https://kianna.love/project-1/)! 
+Try it out [here](https://kianna.love/frogger/)! 
 
 The game was to be built individually and completed within one week - *Please see below for the project brief.*
 
