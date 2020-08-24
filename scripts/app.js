@@ -178,11 +178,9 @@ function setUpGame() {
 
   startButton.addEventListener('click', () => {
 
-    
     endGame = false
     startButton.classList.remove('bob-on-hover')
 
-  
     // ------ GAME TIMER ------ //
 
     intervalId = setInterval(() => {
@@ -198,7 +196,6 @@ function setUpGame() {
 
     // ------ CALLING FUNCTIONS ------ //
     
-
     moveCarsRight()
     moveCarsLeft()
     moveLogsRight()
