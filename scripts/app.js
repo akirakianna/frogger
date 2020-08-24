@@ -170,6 +170,7 @@ function setUpGame() {
     }
   })
 
+   
 
   // ------- PLAYING THE GAME ------- //
 
@@ -177,11 +178,11 @@ function setUpGame() {
 
   startButton.addEventListener('click', () => {
 
-   
+    
     endGame = false
     startButton.classList.remove('bob-on-hover')
 
-
+  
     // ------ GAME TIMER ------ //
 
     intervalId = setInterval(() => {
@@ -203,6 +204,8 @@ function setUpGame() {
     moveLogsRight()
     moveLogsLeft()
     moveLilyPads()
+    
+    startButton.removeEventListener('click', event)
   })
 
   // ------ GAME FUNCTIONS ------ //

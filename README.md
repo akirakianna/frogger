@@ -27,10 +27,10 @@ The game was to be built individually and completed within one week - *Please se
 - The game should be playable for one player.
 - The obstacles should be auto generated and animated.
 - The aim of the game is to guide a frog across a road, and a river to its home at the top of the screen.
-- Must detect any collision (e.g. with cars and river)
+- Must detect any collision (e.g. with cars and river).
 - Timers should be present. 
 
-![Frogger rules] (./images/froggerRules.png)
+![Frogger rules](./images/froggerRules.png)
 
 ## Technologies Used
 - HTML5
@@ -231,12 +231,12 @@ It is also called within the win game conditional statement inside of the gameOv
 
 Days 3 and 4 were reserved for bug fixing (*see bugs and challenges section*), adding any addtional features, styling my game with CSS and animating/ creating my game pieces. 
 
-![Game Board] (./images/frogger-game.png)
+![Game Board](./images/frogger-game.png)
 
 #### Points System
 I created the points system and the sunflowers feature on day 4:
 
-![Game Over Pop Up] (./images/frogger-points.png)
+![Game Over Pop Up](./images/frogger-points.png)
 
 The player can gain (and lose) points throughout the game.
 Points are gained by collecting the sunflowers that are scattered throughout the tiles. The player will lose points each time the frog loses a life. The deductions vary depending on what has caused the frog to lose a life. The conditions are stated in the rules of the game and are written in the ``gamePoints()`` function using conditional statements:
@@ -271,8 +271,8 @@ I also had some fun with my CSS styling and created a popup modal containg the r
     }, delay)
   }
 ```
-![Game Over Pop Up] (./images/game-over.png)
-![Game Won Pop Up] (./images/frogger-win.png)
+![Game Over Pop Up](./images/game-over.png)
+![Game Won Pop Up](./images/frogger-win.png)
 
 As a bonus feature I added a sound effect for when the player wins the game. I used a setTimeout() function so that the sound plays just a little longer than the winning pop up message is displayed :
 
@@ -306,9 +306,9 @@ div.tile.frog.log.water {
 }
 ```
 
-![Frog on log] (./images/frog-on-log.png)
+![Frog on log](./images/frog-on-log.png)
 
-- Frog death (cheery I know) logic - some small bugs fixed while building the game. For example, the frog was only dying if you moved the frog in to a car - I had to adjust the logic so that it also died if it was positioned on a road tile and a car moved into it. 
+- Frog life logic - some small bugs fixed while building the game. For example, the frog was only dying if you moved the frog in to a car - I had to adjust the logic so that it also died if it was positioned on a road tile and a car moved into it. 
 I also had to adjust my if statements so that the frog only lost points/died if it hit a square of water with nothing else on it. 
 - It was also tricky writing the logic for the frog dying if it stayed on the log for too long and and went off the edge of game. This logic is included in the ``moveLogsLeft()`` and ``moveLogsRight()` functions and contains specific conditional statements to do with the tile number and what is currently positioned on that tile.
 - Automated movement using set intervals. Also see code snippet above. Originally had all of the positions hard coded before adding those code snippets in to the render game function instead.
@@ -335,7 +335,7 @@ Below is a list of features/ improvements I would like to add to this game:
 - Bonus points flower that appears randomly throughout the 30 seconds the game runs on the patches of grass where there are no sunflowers present - on a timer itself so it only appears on the square for a couple of seconds before disappearing and reappearing elsewhere.
 - More rows of traffic and river - would like to have included alligators which the frog can still hop on to, but if it ends up on the jaws it loses a life.
 - Multiple frogs/ difficulty levels. Frogs equal to the amount of lily pads.
-- Make it so the frog cannot go backwards (if you miss a sunflower etc)
+- Make it so the frog cannot go backwards (if you miss a sunflower etc).
 
 ## Artwork
 All of the artwork and animation included in the game were/was created/drawn by me using Piskel.
