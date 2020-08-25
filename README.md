@@ -107,14 +107,42 @@ The frog can only be moved once the player has clicked start. To prevent movemen
 `let endGame = true`
 
 Inside of the frog's event listener I have stated that **if endGame is true, return** - which means the user cannot move the frog.
-However there is an else statement which becomes accessible once **endGame equals false**.
+However there is an else statement which becomes accessible once **endGame equals false** which contains all of the conditional logic for moving the frog across the grid.
 
-    document.addEventListener('keydown', (e) => {
-    
+```
+ document.addEventListener('keydown', (e) => {
     if (endGame) {
       //game is over but listening
       return
     } else {
+      if (e.key === 'ArrowRight') {
+        if (frogPosition === tiles.length - 1) {
+          return
+        }
+        frogPosition += 1
+      } else if (e.key === 'ArrowLeft') {
+        if (frogPosition === 0) {
+          return
+        }
+        frogPosition -= 1
+      } else if (e.key === 'ArrowUp') {
+        if (frogPosition < width) {
+          return
+        }
+        frogPosition -= width
+        console.log('frog has moved')
+      } else if (e.key === 'ArrowDown') {
+        if (frogPosition > (tiles.length - width - 1)) {
+          return
+        }
+        frogPosition += width
+      }
+      renderGame()
+      gamePoints()
+      gameOver()
+    }
+  })
+```
     
 Once the start button is clicked, endGame is set to equal false which allows the player to move the frog :
 
@@ -157,7 +185,7 @@ These functions are defined outside of the start button click event listener but
 
 The frog will lose a life/die if: 
 
-- If it is hit by a car
+- If it is hit by a car.
 - If it touches any of the water in either section.
 - If it stays on a log too long and hits either edge of the grid.
 
@@ -297,7 +325,7 @@ Some minor code refactoring and I added some new code so that the sunflowers cha
 
 
 ## Challenges
-- CSS specificity! Had an issue getting the frog to appear on top of the log if the log also had a background image. This was eventually fixed by being incredibly specific with CSS classes:
+- CSS specificity! I had an issue getting the frog to appear on top of the log if the log also had a background image. This was eventually fixed by being incredibly specific with CSS classes:
 
 ```
 div.tile.frog.log.water {

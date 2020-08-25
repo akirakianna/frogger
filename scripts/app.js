@@ -178,6 +178,7 @@ function setUpGame() {
 
   startButton.addEventListener('click', () => {
 
+    
     endGame = false
     startButton.classList.remove('bob-on-hover')
 
@@ -202,7 +203,6 @@ function setUpGame() {
     moveLogsLeft()
     moveLilyPads()
     
-    startButton.removeEventListener('click', event)
   })
 
   // ------ GAME FUNCTIONS ------ //
