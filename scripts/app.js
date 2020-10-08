@@ -149,7 +149,7 @@ function setUpGame() {
         }
         frogPosition += 1
       } else if (e.key === 'ArrowLeft') {
-        if (frogPosition === 0) {
+        if (frogPosition % width === 0) {
           return
         }
         frogPosition -= 1
