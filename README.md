@@ -19,9 +19,9 @@ The game was to be built individually and completed within one week - *Please se
 - Design logic for winning & visually display which player won.
 - Include separate HTML / CSS / JavaScript files.
 - Stick with **KISS (Keep It Simple Stupid)** and **DRY (Don't Repeat Yourself)** principles.
-* Use **Javascript** for **DOM manipulation**.
-* **Deploy your game online**, where the rest of the world can access it.
-* Use **semantic markup** for HTML and CSS (adhere to best practices).
+- Use **Javascript** for **DOM manipulation**.
+- **Deploy your game online**, where the rest of the world can access it.
+- Use **semantic markup** for HTML and CSS (adhere to best practices).
 
 ## Frogger Brief
 - The game should be playable for one player.

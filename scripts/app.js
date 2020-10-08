@@ -32,6 +32,7 @@ function setUpGame() {
   let carsRightInterval
   let carsLeftInterval
 
+  let startGame = false
   let endGame = true
 
 
@@ -157,7 +158,6 @@ function setUpGame() {
           return
         }
         frogPosition -= width
-        console.log('frog has moved')
       } else if (e.key === 'ArrowDown') {
         if (frogPosition > (tiles.length - width - 1)) {
           return
@@ -178,7 +178,12 @@ function setUpGame() {
 
   startButton.addEventListener('click', () => {
 
+    if (startGame) {
+      return
+    } 
     
+    // need to set to true, check to work once clicked on the button
+    startGame = true
     endGame = false
     startButton.classList.remove('bob-on-hover')
 
@@ -235,6 +240,7 @@ function setUpGame() {
   //Called when lives === 0, time has run out, or you win.
 
   function resetGame() {
+
     if (!lives || !count) {
       gameMessage('Game Over!', 3000)
     }
@@ -264,8 +270,10 @@ function setUpGame() {
 
     // Removing key and click listeners so you can't play again until start is clicked
     endGame = true
+    startGame = false
     document.removeEventListener('keydown', event)
     startButton.removeEventListener('click', event)
+    
 
     //Resetting counters
     points = 0
