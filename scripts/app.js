@@ -144,7 +144,7 @@ function setUpGame() {
       return
     } else {
       if (e.key === 'ArrowRight') {
-        if (frogPosition === tiles.length - 1) {
+        if (frogPosition % width === width - 1) {
           return
         }
         frogPosition += 1
