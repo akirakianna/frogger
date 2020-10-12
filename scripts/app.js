@@ -36,7 +36,7 @@ function setUpGame() {
 
   //High score
   localStorage.setItem('highScore', 0)
-  let highscore = localStorage.getItem('highscore')
+  let highscore = localStorage.getItem('highScore')
 
 
   //Creating tiles on grid
@@ -256,10 +256,8 @@ function setUpGame() {
       if (tiles[sunflowerPosition].classList.contains('sunflower')) {
         tiles[sunflowerPosition].classList.remove('sunflower')
       }
-      console.log('before', sunflowerPosition)
       sunflowerPosition = grass[Math.floor(Math.random() * grass.length)]
       tiles[sunflowerPosition].classList.add('sunflower')
-      console.log(sunflowerPosition)
     })
     renderGame()
 
@@ -298,7 +296,6 @@ function setUpGame() {
     //removes frog from current position and places it back at starting position
     frogPosition = 76
     lives = lives - 1
-    console.log(lives)
     livesDisplay.innerHTML = `Lives Remaining: ${lives}`
     if (lives !== 0) {
       gameMessage(`${lives} lives left!`, 1000)
