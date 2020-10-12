@@ -346,10 +346,9 @@ I also had to adjust my if statements so that the frog only lost points/died if 
 - Managed to fix a lot of the little bugs mentioned above, managed my time well so I had time to add it the additonal sunflower points feature, created a working game!
 
 ## Bugs
-- If the start button is clicked more than once, all of the automated movement speeds up. 
+- If the start button is clicked more than once, all of the automated movement speeds up [FIXED]
 - If used on other browsers some of the css styling doesn't show up.
 - When sunflowers are placed randomly at the beginning of each game, they are sometimes placed under frog/ grass so they can't be seen.
-- Not a bug, but on a MacBook Pro, you need to zoom out slightly (at about 75%) to see the full title as well as game board.
 
 
 ## Lessons Learned

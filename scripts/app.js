@@ -14,7 +14,6 @@ function setUpGame() {
 
   const width = 9
   const tiles = []
-  // const sunflowers = [9, 13, 36, 43, 64, 69, 80]
   const grass = [9, 10, 11, 12, 13, 14, 15, 16, 17, 36, 37, 38, 39, 40, 41, 42, 43, 44, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
   const sunflowers = [grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)], grass[Math.floor(Math.random() * grass.length)]]
   const lilyPadFinish = [1, 4, 7]
@@ -34,6 +33,10 @@ function setUpGame() {
 
   let startGame = false
   let endGame = true
+
+  //High score
+  localStorage.setItem('highScore', 0)
+  let highscore = localStorage.getItem('highscore')
 
 
   //Creating tiles on grid
@@ -91,8 +94,8 @@ function setUpGame() {
 
   function renderGame() {
     tiles.forEach(tile => {
-      tile.classList.remove('frog')
       //strip everything off of your board
+      tile.classList.remove('frog')
       tile.classList.remove('log')
       tile.classList.remove('water')
       tile.classList.remove('carsRight')
@@ -159,6 +162,7 @@ function setUpGame() {
         }
         frogPosition -= width
       } else if (e.key === 'ArrowDown') {
+        e.preventDefault()
         if (frogPosition > (tiles.length - width - 1)) {
           return
         }
@@ -322,6 +326,9 @@ function setUpGame() {
       points = 0
     }
     pointsDisplay.innerHTML = `Points: ${points}`
+    if (points > highscore) {
+      localStorage.setItem('highScore', points)
+    }
   }
 
 
@@ -397,9 +404,7 @@ function setUpGame() {
         if (log === frogPosition) {
           if (log === 35) {
             logsRightDisplay[i] = 27
-
             resetFrog()
-
           } else if (log !== 35 && !frogMoved) {
             logsRightDisplay[i] += 1
             frogPosition += 1
